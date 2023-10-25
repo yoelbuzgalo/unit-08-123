@@ -9,10 +9,23 @@ def swap(a_list, a, b):
     a_list[b] = temp_val
     return a_list
 
+def shift(a_list, index):
+    while index > 0 and (a_list[index] < a_list[index-1]):
+        swap(a_list, index, index-1)
+        index -= 1
+    return a_list
+
+def insertion_sort(a_list):
+    for i in range(1, len(a_list)):
+        shift(a_list, i)
+    return a_list
+
 def main():
     # print(random_list(100))
-    some_list = [x for x in range(10)]
-    print(swap(some_list, 2, 3))
+    some_list = list(range(10, 0, -1))
+    print(some_list)
+    # print(shift(some_list,9))
+    print(insertion_sort(some_list))
 
 
 if __name__ == "__main__":
