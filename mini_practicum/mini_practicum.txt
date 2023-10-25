@@ -1,0 +1,24 @@
+Unit 07 Practice Problems (Unit 8 Day 1 mini-practicum)
+
+The goal of these "mini practica" is to give you practice with coding problems
+similar to those that you will see on the midterm practica. You will be 
+required to solve each problem with minimal assistance. You should use these
+mini-practica as an opportunity to gauge your preparedness for the exams.
+
+You should create all of your required files in this folder along with these
+instructions.
+
+Each mini-practicum counts as a homework assignment. 
+===========================================
+
+1. Create a new Python module named "practice" and define a new function named 
+   "in_place_reverse" that declares a parameter for a_list and uses the built-in
+   pop and insert functions to reverse the list without using additional memory.
+   What is the time complexity of the new function? Test the function in a main
+   function using a simple list.
+
+2. Define a function named "make_multiplication_table" that returns a 10x10 
+   multiplication table as a 2D list. The ith row must contain multiples of i:
+   i*1, i*2, …, i*10. Test the function from main and print each row on a 
+   separate line. If you can solve this using only one line of code, you'll get
+   full credit. Using multiple lines will reduce your score by 10 points.
