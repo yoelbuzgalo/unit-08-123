@@ -35,6 +35,12 @@ def insertion_sort_wo_swap(a_list):
         shift_wo_swap(a_list, i)
     return a_list
 
+def split(a_list):
+    mid_point = len(a_list)//2
+    slice_1 = a_list[:mid_point]
+    slice_2 = a_list[mid_point:]
+    return slice_1, slice_2
+
 def main():
     # print(random_list(100))
     some_list = list(range(10, 0, -1))
