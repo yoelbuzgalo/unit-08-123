@@ -60,14 +60,31 @@ def split(a_list):
     slice_2 = a_list[mid_point:]
     return slice_1, slice_2
 
+def merge_sort(a_list):
+    if len(a_list) < 2:
+        return a_list
+    else:
+        l_list, r_list = split(a_list)
+        sorted_left = merge_sort(l_list)
+        sorted_right = merge_sort(r_list)
+        merged = merge(sorted_left, sorted_right)
+        return merged
+        # return merge (merge_sort(left, merge_sort(right)))
+
+
+    
+
 def main():
     # print(random_list(100))
-    some_list = list(range(10, 0, -1))
-    print(some_list)
+    # some_list = list(range(10, 0, -1))
+    # print(some_list)
     # print(shift(some_list,9))
     # print(insertion_sort(some_list))
-    print(insertion_sort_wo_swap(some_list))
-    print(split(some_list))
+    # print(insertion_sort_wo_swap(some_list))
+    # print(split(some_list))
+
+    print(merge([3,4,8], [1,5,9,11]))
+
 
 if __name__ == "__main__":
     main()
