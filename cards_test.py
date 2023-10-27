@@ -24,6 +24,31 @@ def test_cards_10C():
     # Analysis
     assert result == expected
 
+def test_cards_8H():
+    # Setup
+    rank = 8
+    suit = 'Hearts'
+    expected = (8, "Hearts", "8 of Hearts", "8H")
+
+    # Invoke
+    result = cards.make_card(rank, suit)
+
+    # Analysis
+    assert result == expected
+
+
+def test_cards_KS():
+    # Setup
+    rank = 13
+    suit = 'Spades'
+    expected = (13, "Spades", "King of Spades", "KS")
+
+    # Invoke
+    result = cards.make_card(rank, suit)
+
+    # Analysis
+    assert result == expected
+
 def test_cards_invalid_suit():
     # setup
     rank = 10
