@@ -36,7 +36,7 @@ def insertion_sort_wo_swap(a_list):
     return a_list
 
 def split(a_list):
-    mid_point = len(a_list)//2
+    mid_point = (len(a_list)+1)//2
     slice_1 = a_list[:mid_point]
     slice_2 = a_list[mid_point:]
     return slice_1, slice_2
@@ -48,7 +48,7 @@ def main():
     # print(shift(some_list,9))
     # print(insertion_sort(some_list))
     print(insertion_sort_wo_swap(some_list))
-
+    print(split(some_list))
 
 if __name__ == "__main__":
     main()
