@@ -35,6 +35,25 @@ def insertion_sort_wo_swap(a_list):
         shift_wo_swap(a_list, i)
     return a_list
 
+def merge(left_list, right_list):
+    merged = []
+    i1 = 0
+    i2 = 0
+
+    while (i1 < len(left_list)) and (i2 < len(right_list)):
+        if left_list[i1] <= right_list[i2]:
+            merged.append(left_list[i1])
+            i1 += 1
+        else:
+            merged.append(right_list[i2])
+            i2 += 1
+    if i1 != len(left_list):
+        merged += left_list[i1:]
+    else:
+        merged += right_list[i2:]
+
+    return merged
+
 def split(a_list):
     mid_point = (len(a_list)+1)//2
     slice_1 = a_list[:mid_point]
