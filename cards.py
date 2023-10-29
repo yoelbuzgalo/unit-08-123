@@ -1,3 +1,6 @@
+SUITS = ("Clubs", "Diamonds", "Hearts", "Spades") # Global constant for suit names to be used in different functions (better to use same variable value to prevent spelling errors)
+RED_VALUE, BLUE_VALUE, WHITE_VALUE = "\033[31m", "\033[34m" , "\033[37m" # Global constants for the pytest to be able to import and use in syntax check
+
 def make_card(rank, suit):
     '''
     This function makes and returns a card
@@ -7,13 +10,11 @@ def make_card(rank, suit):
     shorthand = ""
     name = ""
 
-    red_value, blue_value, white_value = "\033[31m", "\033[34m" , "\033[37m"
-
     # This function hardcodes name and shorthand based on values passed to this function
     try:
         if rank > 14 or rank < 1:
             raise ValueError()
-        if suit == 'Diamonds' or suit == 'Clubs' or suit == 'Hearts' or suit == 'Spades':
+        if suit == SUITS[0] or suit == SUITS[1] or suit == SUITS[2] or suit == SUITS[3]:
             if rank == 11:
                 name = "Jack of " + suit
                 shorthand = 'J' + suit[0]
@@ -35,20 +36,26 @@ def make_card(rank, suit):
         print("There was an error with passed suit or rank to this function")
         return None
 
-    # Color insertion by shorthand value, depending on the Suit
-    if shorthand[1] == 'D':
-        shorthand = red_value + shorthand + white_value
-    elif shorthand[1] == 'C':
-        shorthand = blue_value + shorthand + white_value
-    elif shorthand[1] == 'H':
-        shorthand = red_value + shorthand + white_value
-    elif shorthand[1] == 'S':
-        shorthand = blue_value + shorthand + white_value
+    # Color insertion by shorthand value, depending on the Suit..
+    # Checks the last index of any shorthand of its current suit and inserts accordingly its color
+    if shorthand[-1] == 'D':
+        shorthand = RED_VALUE + shorthand + WHITE_VALUE
+    elif shorthand[-1] == 'C':
+        shorthand = BLUE_VALUE + shorthand + WHITE_VALUE
+    elif shorthand[-1] == 'H':
+        shorthand = RED_VALUE + shorthand + WHITE_VALUE
+    elif shorthand[-1] == 'S':
+        shorthand = BLUE_VALUE + shorthand + WHITE_VALUE
 
     return (rank, suit, name, shorthand) # Return a tuple containing these values
 
+def make_deck():
+    ranks = range(2, 15)
+    return [make_card(x, y) for x in ranks for y in SUITS]
+
 def main():
-    print(make_card(8, 'Diamonds')[3], make_card(13, 'Clubs')[3])
+    # print(make_card(8, 'Diamonds')[3], make_card(13, 'Clubs')[3])
+    print(make_deck())
     
 
 if __name__ == "__main__":
