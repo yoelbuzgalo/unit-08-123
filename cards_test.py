@@ -1,4 +1,5 @@
 import cards
+import random
 
 def test_cards_JD():
     # Setup
@@ -115,10 +116,32 @@ def test_card_deck_hearts():
 
 def test_card_deck_spades():
     # Setup
-    expected =(2, "Spades", "2 of Spades", (cards.BLUE_VALUE+"2S"+cards.WHITE_VALUE))
+    expected = (2, "Spades", "2 of Spades", (cards.BLUE_VALUE+"2S"+cards.WHITE_VALUE))
 
     # Invoke
     result = cards.make_deck()
 
     # Analysis
     assert result[3] == expected
+
+def test_shuffle_deck_1():
+    # Setup
+    random.seed(0)
+    expected = cards.make_deck()
+    
+    # Invoke
+    result = cards.shuffle(cards.make_deck())
+
+    # Analysis
+    assert result[1] == expected[48]
+
+def test_shuffle_deck_5():
+    # Setup
+    random.seed(0)
+    expected = cards.make_deck()
+    
+    # Invoke
+    result = cards.shuffle(cards.make_deck())
+
+    # Analysis
+    assert result[5] == expected[32]

@@ -1,3 +1,6 @@
+import random
+from sorts import swap
+
 SUITS = ("Clubs", "Diamonds", "Hearts", "Spades") # Global constant for suit names to be used in different functions (better to use same variable value to prevent spelling errors)
 RED_VALUE, BLUE_VALUE, WHITE_VALUE = "\033[31m", "\033[34m" , "\033[37m" # Global constants for the pytest to be able to import and use in syntax check
 
@@ -50,12 +53,29 @@ def make_card(rank, suit):
     return (rank, suit, name, shorthand) # Return a tuple containing these values
 
 def make_deck():
+    '''
+    This function makes a standard 52 deck with make_card function, it returns a deck of 52 cards containing different ranks and suits
+    '''
     ranks = range(2, 15)
     return [make_card(x, y) for x in ranks for y in SUITS]
 
+def shuffle(a_deck):
+    '''
+    This function shuffles any given deck, changing cards' order and returns a new shuffled deck
+    '''
+    for index in range(0,len(a_deck)):
+        selected_index = random.randrange(0, len(a_deck))
+        copy_value = a_deck[index]
+        a_deck[index] = a_deck[selected_index]
+        a_deck[selected_index] = copy_value
+
+    return a_deck
+
+
 def main():
     # print(make_card(8, 'Diamonds')[3], make_card(13, 'Clubs')[3])
-    print(make_deck())
+    # print(shuffle(make_deck()))
+    pass
     
 
 if __name__ == "__main__":
