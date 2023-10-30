@@ -145,3 +145,14 @@ def test_shuffle_deck_5():
 
     # Analysis
     assert result[5] == expected[32]
+
+def test_draw():
+    # Setup
+    expected = cards.make_deck()
+    hand = []
+
+    # Invoke
+    result = cards.draw(cards.make_deck(), hand)
+
+    # Analysis
+    assert hand[-1] == result and result == expected[-1] 

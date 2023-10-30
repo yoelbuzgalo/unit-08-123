@@ -71,6 +71,19 @@ def shuffle(a_deck):
 
     return a_deck
 
+def draw(a_deck, a_hand):
+    '''
+    This function draws a card from a deck passed this function and adds 
+    '''
+    if len(a_deck) > 0:
+        drawn = a_deck.pop()
+        a_hand.append(drawn) # Append to hand with the card that was drawn
+        return drawn # Return the card that was drawn
+    else:
+        return None # Return none if length of deck is equal or smaller than 0
+    
+def deal_one_hand():
+    pass
 
 def main():
     # print(make_card(8, 'Diamonds')[3], make_card(13, 'Clubs')[3])
