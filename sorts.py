@@ -1,4 +1,5 @@
 import random
+import time
 
 def random_list(length):
     return [random.randint(0,length) for x in range(length)]
@@ -95,7 +96,26 @@ def quicksort(a_list):
         sorted_more = quicksort(more)
         return sorted_less + same + sorted_more
 
+
+def quicksort_mid(a_list):
+    if len(a_list) < 2:
+        return a_list
+    else:
+        pivot_index = len(a_list) // 2
+        less, same, more = partition(a_list, a_list[pivot_index])
+        sorted_less = quicksort(less)
+        sorted_more = quicksort(more)
+        return sorted_less + same + sorted_more
     
+def quicksort_random(a_list):
+    if len(a_list) < 2:
+        return a_list
+    else:
+        pivot_index = random.randrange(0,len(a_list))
+        less, same, more = partition(a_list, a_list[pivot_index])
+        sorted_less = quicksort(less)
+        sorted_more = quicksort(more)
+        return sorted_less + same + sorted_more
 
 def main():
     # print(random_list(100))
@@ -105,8 +125,32 @@ def main():
     # print(insertion_sort(some_list))
     # print(insertion_sort_wo_swap(some_list))
     # print(split(some_list))
+    # print(merge([3,4,8], [1,5,9,11]))
+    a_list = [1,2,3,4,5,6,7,8]
+    b_list = [8,7,6,5,4,3,2,1]
 
-    print(merge([3,4,8], [1,5,9,11]))
+    start_normal = time.perf_counter()
+    quicksort(a_list)
+    quicksort(b_list)
+    end_normal = time.perf_counter()
+
+    start_mid = time.perf_counter()
+    quicksort_mid(a_list)
+    quicksort_mid(b_list)
+    end_mid = time.perf_counter()
+
+    start_random = time.perf_counter()
+    quicksort_random(a_list)
+    quicksort_random(b_list)
+    end_random = time.perf_counter()
+
+    elapsed_normal = end_normal - start_normal
+    elapsed_mid = end_mid - start_mid
+    elapsed_random = end_random - start_random
+
+    print("First/last index time:", elapsed_normal)
+    print("Mid index time:", elapsed_mid)
+    print("Random index time", elapsed_random)
 
 
 if __name__ == "__main__":
