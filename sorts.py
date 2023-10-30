@@ -71,6 +71,19 @@ def merge_sort(a_list):
         return merged
         # return merge (merge_sort(left, merge_sort(right)))
 
+def partition(a_list, pivot):
+
+    less, same, more = [], [], []
+
+    for value in a_list:
+        if value < pivot:
+            less.append(value)
+        elif value == pivot:
+            same.append(value)
+        elif value > pivot:
+            more.append(value)
+
+    return less, same, more
 
     
 

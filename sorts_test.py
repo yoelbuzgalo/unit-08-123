@@ -54,3 +54,15 @@ def test_merge_sort_sorted():
 
     # Analysis
     assert result == expected
+
+def test_partition():
+    # Setup
+    a_list = [5,2,6,1,8,4,7]
+
+    # Invoke
+    less, same, more = sorts.partition(a_list, a_list[0])
+
+    # Analysis
+    assert less == [2,1,4]
+    assert same == [5]
+    assert more == [6,8,7]
