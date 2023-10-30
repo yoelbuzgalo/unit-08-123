@@ -66,3 +66,47 @@ def test_partition():
     assert less == [2,1,4]
     assert same == [5]
     assert more == [6,8,7]
+
+def test_quicksort_len():
+    # Setup
+    a_list = [1]
+    expected = [1]
+
+    # Invoke
+    result = sorts.quicksort(a_list)
+
+    # Analysis
+    assert result == expected
+
+def test_quicksort_arbitrary():
+    # Setup
+    a_list = [5,2,6,1,8,4,7]
+    expected = [1,2,4,5,6,7,8]
+
+    # Invoke
+    result = sorts.quicksort(a_list)
+
+    # Analysis
+    assert result == expected
+
+def test_quicksort_sorted():
+    # Setup
+    a_list = [1,2,3,4,5]
+    expected = [1,2,3,4,5]
+
+    # Invoke
+    result = sorts.quicksort(a_list)
+    
+    # Analysis
+    assert result == expected
+
+def test_quicksort_reversed():
+    # Setup
+    a_list = [5,4,3,2,1]
+    expected = [1,2,3,4,5]
+
+    # Invoke
+    result = sorts.quicksort(a_list)
+
+    # Analysis
+    assert result == expected

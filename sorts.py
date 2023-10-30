@@ -85,6 +85,16 @@ def partition(a_list, pivot):
 
     return less, same, more
 
+def quicksort(a_list):
+    if len(a_list) < 2:
+        return a_list
+    else:
+        pivot = a_list[0]
+        less, same, more = partition(a_list, pivot)
+        sorted_less = quicksort(less)
+        sorted_more = quicksort(more)
+        return sorted_less + same + sorted_more
+
     
 
 def main():
