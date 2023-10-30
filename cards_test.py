@@ -155,4 +155,17 @@ def test_draw():
     result = cards.draw(cards.make_deck(), hand)
 
     # Analysis
-    assert hand[-1] == result and result == expected[-1] 
+    assert hand[-1] == result and result == expected[-1]
+
+def test_deal_one_hand():
+    # Setup
+    deck = cards.make_deck()
+
+    # Invoke
+    result = cards.deal_one_hand(cards.make_deck(), 3)
+
+    print(result)
+
+    # Analysis:
+    # Assert the length is correct and cards matching in order based on expected drawn cards from deck
+    assert len(result) == 3 and result[0] == deck[-1] and result[1] == deck[-2] and result[2] == deck[-3]

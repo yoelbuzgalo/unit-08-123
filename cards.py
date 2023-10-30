@@ -82,8 +82,11 @@ def draw(a_deck, a_hand):
     else:
         return None # Return none if length of deck is equal or smaller than 0
     
-def deal_one_hand():
-    pass
+def deal_one_hand(a_deck, num_cards):
+    hand = []
+    for _ in range(num_cards):
+        draw(a_deck, hand)
+    return hand
 
 def main():
     # print(make_card(8, 'Diamonds')[3], make_card(13, 'Clubs')[3])
