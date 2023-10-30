@@ -1,5 +1,6 @@
 import random
-import time
+import plotter
+import sort_times
 
 def random_list(length):
     return [random.randint(0,length) for x in range(length)]
@@ -129,28 +130,22 @@ def main():
     a_list = [1,2,3,4,5,6,7,8]
     b_list = [8,7,6,5,4,3,2,1]
 
-    start_normal = time.perf_counter()
-    quicksort(a_list)
-    quicksort(b_list)
-    end_normal = time.perf_counter()
-
-    start_mid = time.perf_counter()
-    quicksort_mid(a_list)
-    quicksort_mid(b_list)
-    end_mid = time.perf_counter()
-
-    start_random = time.perf_counter()
-    quicksort_random(a_list)
-    quicksort_random(b_list)
-    end_random = time.perf_counter()
-
-    elapsed_normal = end_normal - start_normal
-    elapsed_mid = end_mid - start_mid
-    elapsed_random = end_random - start_random
-
-    print("First/last index time:", elapsed_normal)
-    print("Mid index time:", elapsed_mid)
-    print("Random index time", elapsed_random)
+    plotter.init("Quicksort", "Sort", "Time")
+    plotter.new_series("Random")
+    a_list = random_list(990)
+    plotter.add_data_point(sort_times.sort_function_timer(a_list, quicksort))
+    a_list = random_list(990)
+    plotter.add_data_point(sort_times.sort_function_timer(a_list, quicksort_mid))
+    a_list = random_list(990)
+    plotter.add_data_point(sort_times.sort_function_timer(a_list, quicksort_random))
+    plotter.new_series("Sorted")
+    a_list = list(range(990))
+    plotter.add_data_point(sort_times.sort_function_timer(a_list, quicksort))
+    a_list = list(range(990))
+    plotter.add_data_point(sort_times.sort_function_timer(a_list, quicksort_mid))
+    a_list = list(range(990))
+    plotter.add_data_point(sort_times.sort_function_timer(a_list, quicksort_random))
+    plotter.plot()
 
 
 if __name__ == "__main__":
