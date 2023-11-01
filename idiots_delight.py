@@ -33,6 +33,12 @@ def play_round(a_deck, a_hand):
     if len(a_hand) < 4:
         for i in range(len(a_hand), 4):
             cards.draw(a_deck, a_hand)
+
+    while len(a_hand) > 4:
+        first = a_hand[-4][0]
+        fourth = a_hand[-1][0]
+        if first == fourth:
+            discard(a_hand, 4)
     
     print(a_hand)
 
