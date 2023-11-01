@@ -24,3 +24,21 @@ def discard(a_hand, num_cards):
         a_hand.pop(-2)
     
     return a_hand
+
+def play_round(a_deck, a_hand):
+    '''
+    This function plays a round of game, given a deck and a hand of cards.
+    '''
+
+    if len(a_hand) < 4:
+        for i in range(len(a_hand), 4):
+            cards.draw(a_deck, a_hand)
+    
+    print(a_hand)
+
+    if len(a_deck) > 0:
+        last_hand = a_deck.pop()
+        print(last_hand)
+
+    return a_deck, a_hand
+    
