@@ -90,8 +90,7 @@ def deal_one_hand(a_deck, num_cards):
 
 def main():
     # print(make_card(8, 'Diamonds')[3], make_card(13, 'Clubs')[3])
-    # print(shuffle(make_deck()))
-    pass
+    print(make_deck())
     
 
 if __name__ == "__main__":
